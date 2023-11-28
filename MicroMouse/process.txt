@@ -1,0 +1,67 @@
+Step 1:
+Load the image in .jpg format into the work-space folder
+
+
+Step 2:
+Load that image into walls_pieces_coords.py file.
+This will convert the image into coordinates having rgba color format 
+This file will save the entire image coordinates as mentioned above in a file called 'coords_maze.txt'
+It will save all the coordinates in red color in a seperate file called 'walls_maze.txt'
+
+
+Step 3:
+Now load the 'walls_maze.txt' into coords_to_walls.py file.
+In this file it will convert all the walls coordinates into the walls with the color mentioned(i.e., red)
+Now we will have a binary image of the initian image. This image will only have the walls and a black background.
+This image is saved as 'reconstructed_walls.jpg' file
+
+
+Step 4:
+Now load the 'reconstructed_walls.jpg' into harris_corner_detection_method.py
+The parameters are :
+
+set the maxCorners = 500
+qualityLevel = 0.001
+minDistance = 1( in px)
+useHarrisDetector = True
+k= 0.1
+
+This will generate a set of corners
+We will save these corners and also their (x, y) form because these will be generated as an numpy64 array
+
+
+Step 5:
+We will load the corners and corner_coords from harris_corner_detection_method.py into convex_hull.py
+In convex convex_hull.py we will get an approxmate boundary of the set of points enclosing all the required points.
+These points maynot not be 4 and can be even greater
+We will save these final coordinates bu the name 'convex_hull'
+
+
+Step 6:
+From convex_hull.py we will load convex_hull into maze_corners_highlight.py
+Here, base don the set of points(i.e., convex_hull) we got previously, we will get a polygon in the white color around those coordinates
+We will store this image with corners highlighted in white polygon as 'walls_with_edges_corners_in_white.jpg'
+
+
+Step 6:
+we will now load the 'walls_with_edges_corners_in_white.jpg' into final_corners.py file
+We will convert this image into a black and white one for better accuracy
+Now we will perform harris corner detection on this image
+The parameters are :
+
+maxCorners = 10
+qualityLevel = 0.1
+minDistance = 200 
+useHarrisDetector = True
+k = 0.05
+
+This will finally produce the 4 corners of the maze
+We will mark the coordinates on the image and save it as 'final_4_corners.jpg'
+We will store these 4 coordinates in a numpy64 array called corners
+
+
+Step 7:
+Now we will load the 'reconstructed_walls.jpg' and corners from final_corners.py into perspective_wrap.py file
+In this, we will get the bird eye view of the maze.
+We will save this image as 'final_wrapped_image.jpg' 
+
