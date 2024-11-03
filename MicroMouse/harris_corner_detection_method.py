@@ -17,6 +17,13 @@ for c in corners:
        cv2.circle(img, center=(x, y), radius=2, color=(0, 255, 0), thickness=-1, )
 
      
+
+for corner in corners:
+    x, y = corner.ravel()
+    cv2.circle(img, (x, y), radius=2, color=(0, 255, 0), thickness=-1)
+
+# Save the image with marked corners
+cv2.imwrite('walls_with_corners_harris_initial_pass.jpg', img)
 # cv2.namedWindow("Maze with Corners", cv2.WINDOW_NORMAL)
 # cv2.resizeWindow("Maze with Corners", 800, 600)
 # cv2.imshow('Maze with Corners', img)

@@ -34,7 +34,7 @@ Step 5:
 We will load the corners and corner_coords from harris_corner_detection_method.py into convex_hull.py
 In convex convex_hull.py we will get an approxmate boundary of the set of points enclosing all the required points.
 These points maynot not be 4 and can be even greater
-We will save these final coordinates bu the name 'convex_hull'
+We will save these final coordinates by the name 'convex_hull'
 
 
 Step 6:

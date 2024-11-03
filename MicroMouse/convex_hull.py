@@ -57,6 +57,19 @@ for i in convex_hull:
        x, y = i.ravel()
        cv2.circle(img, center=(x, y), radius=2, color=(0, 255, 0), thickness=-1)
 
+# Mark the points on the original image
+for point in convex_hull:
+    x, y = point.astype(int)
+    cv2.circle(img, (x, y), radius=5, color=(0, 255, 0), thickness=-1)
+
+# Draw lines connecting the points
+hull_points = np.array(convex_hull, dtype=np.int32)
+# cv2.polylines(img, [hull_points], isClosed=True, color=(0, 255, 0), thickness=2)
+
+# Save the image
+cv2.imwrite('walls_with_hull_points.jpg', img)
+
+
 # cv2.imshow('Maze with Corners', img)
 # 
 # cv2.waitKey(0)
